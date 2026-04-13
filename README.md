@@ -2,7 +2,7 @@
 
 
 # Description
-Cryptoclicker is a fast-paced adrenaline filled incremental clicker game based on mining crypto. Generate virtual currency by clicking, upgrading, and automating your very one mining rig. Invest strategically, boost production rates, and take the blockchain by storm.
+Cryptoclicker is a fast-paced adrenaline filled incremental clicker game based on mining crypto. Generate virtual currency by clicking, upgrading, and automating your very own mining rig. Invest strategically, boost production rates, and take the blockchain by storm.
 
 
 
