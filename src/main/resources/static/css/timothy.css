@@ -1,0 +1,55 @@
+
+/*#d508ed*/
+
+@font-face {
+    font-family: 'Ds-font';
+    src: url('/fonts/Nintendo-DS-BIOS.ttf') format('truetype');
+}
+
+body {
+    font-family: Arial, sans-serif;
+        background-image: url("/Assets/NDSLite_DBG_Purple_BTM.png");
+        background-size: cover;
+        background-position: center;
+}
+.top-left{
+    position: absolute;
+    margin-left: 10%;
+    text-align: left;
+}
+
+.top-left h1 {
+    font-family: Ds-font, sans-serif;
+    color: #d812f0;
+    font-size: 100px;
+}
+
+.top-right {
+    /*position: absolute;*/
+    margin-right: 5%;
+    margin-top: 5%;
+    text-align: right;
+}
+
+.top-right img {
+    width: 300px;
+    height: 300px;
+    border: 7px solid #d812f0;
+    object-fit: cover;
+}
+
+.bio {
+    margin-left: 10%;
+    max-width: 600px;
+    text-align: center;
+    background: #fff;
+    border: 7px solid #d812f0;
+    padding: 25px;
+}
+
+.bio p {
+    color: #d812f0;
+    font-family: Ds-font, sans-serif;
+    line-height: 1.6;
+    font-size: 20px;
+}
