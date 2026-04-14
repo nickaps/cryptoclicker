@@ -3,12 +3,12 @@
 
 @font-face {
     font-family: 'Ds-font';
-    src: url('/fonts/Nintendo-DS-BIOS.ttf') format('truetype');
+    src: url('../fonts/Nintendo-DS-BIOS.ttf') format('truetype');
 }
 
 body {
     font-family: Arial, sans-serif;
-        background-image: url("/Assets/NDSLite_DBG_Purple_BTM.png");
+        background-image: url("../assets/NDSLite_DBG_Purple_BTM.png");
         background-size: cover;
         background-position: center;
 }
