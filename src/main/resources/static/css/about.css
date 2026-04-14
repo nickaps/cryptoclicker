@@ -1,0 +1,60 @@
+
+/*
+* I'm not sure weather any of are pages will share layouts at the moment.
+* So feel free to change this or make work for other pages as needed.
+*
+* */
+
+@font-face {
+    font-family: 'Ds-font';
+    src: url('../fonts/Nintendo-DS-BIOS.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: Ds-font, sans-serif;
+    background-image: url("../assets/NDSLite_DBG_Purple_BTM.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.title-bar {
+    font-family: Ds-font, sans-serif;
+    font-size: 70px;
+    margin: 0;
+    background: #d812f0;
+    text-align: center;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.names {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.names a {
+    margin: 0 25px;
+    font-family: Ds-font, sans-serif;
+    color: black;
+    text-decoration: none;
+    font-size: 50px;
+}
+
+.names a:hover {
+    background: #d812f0;
+    padding: 5px 10px;
+    transition: 1s;
+}
+
+.about-us{
+    font-family: Ds-font, sans-serif;
+    text-align: center;
+    font-size: 25px;
+    word-spacing: 2px;
+    background: white;
+    margin: 15% auto 0 auto;
+    max-width: 600px;
+    border: 5px solid #d812f0;
+    padding: 25px;
+}
