@@ -66,3 +66,24 @@ body {
         border: 7px solid #d812f0;
 
 }
+
+.info {
+    text-align: center;
+    margin-top: 10px;
+}
+
+.info a{
+    margin: 0 25px;
+    font-family: Ds-font, sans-serif;
+    color: black;
+    text-decoration: none;
+    font-size: 50px;
+    transition: .5s ease-in-out;
+    transform: scale(1);
+}
+
+.info a:hover {
+    background: #d812f0;
+    padding: 5px 10px;
+    transform: scale(1.2);
+}
