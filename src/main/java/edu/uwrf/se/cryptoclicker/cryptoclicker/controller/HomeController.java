@@ -9,6 +9,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 @Controller
 public class HomeController {
 
+
+    @GetMapping("/")
+    public String getHomeDefault(Model model) {
+        return "home";
+    }
+
     @GetMapping("/home")
     public String getHome(Model model) {
         return "home";
