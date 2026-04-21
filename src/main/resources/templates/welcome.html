@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="/static/css/about.css">
+</head>
+<body>
+    <h2 th:object="${user}">Welcome <a th:text="*{username}">Guest</a>!</h2>
+    <p th:object="${user}">Think you can beat your high-score of <a th:text="*{score}">1000</a> crypto?</p>
+</body>
+</html>
