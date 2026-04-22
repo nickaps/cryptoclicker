@@ -11,7 +11,7 @@
     color: black;
     text-decoration: none;
     font-size: 50px;
-    transition: .5s ease-in-out;
+    transition: .25s ease-in-out;
     transform: scale(1);
 }
 
@@ -31,4 +31,13 @@
     max-width: 600px;
     border: 5px solid #d812f0;
     padding: 25px;
+}
+
+body, html{
+    /* Use your image + a fallback (like 'auto') */
+    cursor: url('../assets/DS_Stylus_128.png')0 105, default !important;
+}
+
+a, button, input, label, html, body [role="button"] {
+    cursor: url('../assets/DS_Stylus_128.png')0 105, auto !important;
 }

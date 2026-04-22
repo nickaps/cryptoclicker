@@ -11,7 +11,13 @@ body {
     background-image: url("../assets/NDSLite_DBG_Purple_BTM.png");
     background-size: cover;
     background-position: center;
+
+    cursor: url('../assets/DS_Stylus_128.png')0 105, default !important;
 }
+a, button, input, label, [role="button"] {
+    cursor: url('../assets/DS_Stylus_128.png')0 105, auto !important;
+}
+
 .top-left{
     position: absolute;
     margin-left: 10%;
@@ -78,7 +84,7 @@ body {
     color: black;
     text-decoration: none;
     font-size: 25px;
-    transition: .5s ease-in-out;
+    transition: .25s ease-in-out;
     transform: scale(1);
 }
 

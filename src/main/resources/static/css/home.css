@@ -31,6 +31,7 @@ body {
 .start {
     text-align: center;
     margin-top: 10px;
+    margin-bottom: 100px;
 }
 
 .start a {
@@ -39,7 +40,7 @@ body {
     color: black;
     text-decoration: none;
     font-size: 50px;
-    transition: .5s ease-in-out;
+    transition: .25s ease-in-out;
     transform: scale(1);
 }
 
@@ -47,4 +48,13 @@ body {
     background: #d812f0;
     padding: 5px 10px;
     transform: scale(1.2);
+}
+
+html, body {
+    /* Use your image + a fallback (like 'auto') */
+    cursor: url('../assets/DS_Stylus_128.png')0 105, default !important;
+}
+
+a, button, input, label, [role="button"] {
+    cursor: url('../assets/DS_Stylus_128.png')0 105, auto !important;
 }
