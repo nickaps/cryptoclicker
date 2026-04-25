@@ -5,12 +5,20 @@
     src: url('../fonts/Nintendo-DS-BIOS.ttf') format('truetype');
 }
 
+/* ✅ FIXED CURSOR (replaces your old cursor rules) */
+* {
+    cursor: url('../assets/DS_Stylus_128.png') 0 105, auto !important;
+}
+
+input, textarea {
+    cursor: text !important;
+}
+
 body {
     font-family: Arial, sans-serif;
     background-image: url("../assets/NDSLite_DBG_Purple_BTM.png");
     background-size: cover;
     background-position: center;
-    /*background-attachment: fixed;*/
     margin: 0;
 }
 
@@ -29,9 +37,6 @@ form{
     font-size: 25px;
     text-align: center;
     margin-top: 10px;
-
-
-
 }
 
 input {
@@ -59,6 +64,8 @@ button:hover {
 .info {
     text-align: center;
     margin-top: 100px;
+    font-family: Ds-font, sans-serif;
+    font-size: 25px;
 }
 
 .info a{
@@ -67,7 +74,7 @@ button:hover {
     color: black;
     text-decoration: none;
     font-size: 25px;
-    transition: .5s ease-in-out;
+    transition: .25s ease-in-out;
     transform: scale(1);
 }
 
