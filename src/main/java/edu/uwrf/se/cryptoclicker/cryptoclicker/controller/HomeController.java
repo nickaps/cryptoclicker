@@ -3,11 +3,13 @@ package edu.uwrf.se.cryptoclicker.cryptoclicker.controller;
 
 import edu.uwrf.se.cryptoclicker.cryptoclicker.model.Player;
 import edu.uwrf.se.cryptoclicker.cryptoclicker.repository.PlayerRepository;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -71,16 +73,24 @@ public class HomeController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@ModelAttribute Player player, Model model) {
+    public String loginUser(@ModelAttribute Player player, HttpSession session, Model model) {
         Player existingUser = playerRepository.findByUsername(player.getUsername());
 
         if(existingUser != null && existingUser.getPassword().equals(player.getPassword())) {
 //            model.addAttribute("username", existingUser.getUsername());
-            model.addAttribute("user", existingUser);
-            return "welcome";
+            session.setAttribute("currentUser", existingUser);
+            return "redirect:/welcome";
         } else {
             model.addAttribute("error", "Invalid username or password!");
             return "login";
         }
+    }
+
+    @GetMapping("/welcome")
+    public String welcomeScreen(HttpSession session, Model model) {
+        Player player = (Player) session.getAttribute("currentUser");
+        System.out.println(player.getUsername());
+        model.addAttribute("user", player);
+        return "welcome";
     }
 }
