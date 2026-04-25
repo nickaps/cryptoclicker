@@ -34,6 +34,10 @@ public class HomeController {
         return devName;
     }
 
+    @GetMapping("/game")
+    public String game() {
+        return "game";
+    }
 
 
 

@@ -1,0 +1,12 @@
+.page-subtitle {
+    font-family: Ds-font, sans-serif;
+    font-size: 50px;
+    text-align: center;
+    display: block;   /* makes it act like a heading */
+    margin-top: 10px;
+    font-weight: normal;
+}
+
+.content {
+    margin-top: 150px;
+}
