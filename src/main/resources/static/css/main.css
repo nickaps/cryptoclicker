@@ -48,6 +48,7 @@ input {
 button {
     font-family: Ds-font, sans-serif;
     padding: 5px;
+    text-align: center;
     font-size: 25px;
     margin-top: 25px;
     background: transparent;

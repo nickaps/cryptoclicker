@@ -9,14 +9,20 @@
         var currentUser = [[${user}]];
         var currentUserName = [[${currentUserName}]];
         var currentUserScore = [[${currentUserScore}]];
+        document.getElementById("scoreboard").innerHTML = score;
     </script>
-
     <script th:src="@{/scripts/game.js}"></script>
 </head>
 
 <body>
 
 <h2 class="title-bar">Crypto Clicker</h2>
+
+<div id="scoreboard">Crypto: <span id="score">0</span></div>
+
+<div id="game">
+    <button class="crypto" onclick="addScore()">Click Here!</button>
+</div>
 
 <div class="content">
     <div class="info">

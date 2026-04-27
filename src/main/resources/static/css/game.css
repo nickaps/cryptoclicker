@@ -6,6 +6,33 @@
     margin-top: 10px;
     font-weight: normal;
 }
+#scoreboard{
+    font-family: Ds-font, sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+
+#game{
+    display: flex;
+    justify-content: center;
+}
+
+.crypto {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: none;
+    background-color: #d812f0;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+.crypto:hover {
+    transition: .25s ease-in-out;
+    background: #f09712;
+    font-size: 25px;
+    padding: 5px 10px;
+}
 
 .content {
     margin-top: 150px;
