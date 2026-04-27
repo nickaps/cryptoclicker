@@ -9,28 +9,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.io.Console;
 
 @Controller
 public class HomeController {
 
 
     @GetMapping("/")
-    public String getHomeDefault(Model model) {
+    public String getHomeDefault() {
         return "home";
     }
 
     @GetMapping("/home")
-    public String getHome(Model model) {
+    public String getHome() {
         return "home";
     }
 
     @GetMapping("/about")
-    public String getAbout(Model model) {
+    public String getAbout() {
         return "about";
     }
 
@@ -117,7 +115,7 @@ public class HomeController {
             return "redirect:/home";
         }
         else {
-            if (newScore != -1 && newScore > player.getScore())
+            if (newScore > -1 && newScore > player.getScore())
             {
                 player.setScore(newScore);
                 playerRepository.setPlayerScore(player.getId(), newScore);
