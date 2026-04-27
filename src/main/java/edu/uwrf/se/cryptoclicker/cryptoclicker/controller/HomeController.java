@@ -33,7 +33,7 @@ public class HomeController {
     }
 
     @GetMapping("/about/{name}")
-    public String getDeveloperPage(@PathVariable("name") String devName, Model model) {
+    public String getDeveloperPage(@PathVariable("name") String devName) {
         return devName;
     }
 
