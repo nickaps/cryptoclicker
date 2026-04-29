@@ -17,6 +17,14 @@
     justify-content: center;
 }
 
+.rigShop{
+    justify-content: right;
+}
+
+.rig{
+    background: #d812f0;
+}
+
 .crypto {
     width: 150px;
     height: 150px;

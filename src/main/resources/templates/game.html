@@ -6,12 +6,17 @@
     <link rel="stylesheet" href="/css/game.css">
 
     <script th:inline="javascript">
+
+        window.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("score").textContent = 0;
+        });
+
         var currentUser = [[${user}]];
         var currentUserName = [[${currentUserName}]];
         var currentUserScore = [[${currentUserScore}]];
-        document.getElementById("scoreboard").innerHTML = score;
+
     </script>
-    <script th:src="@{/scripts/game.js}"></script>
+    <script th:src="@{/scripts/game.js}" defer></script>
 </head>
 
 <body>
@@ -22,6 +27,11 @@
 
 <div id="game">
     <button class="crypto" onclick="addScore()">Click Here!</button>
+</div>
+
+<div id="rigShop">
+    <button class="rig" onclick="buy('mk1')">mk1</button>
+    <button class="rig" onclick="buy('mk2')">mk2</button>
 </div>
 
 <div class="content">
