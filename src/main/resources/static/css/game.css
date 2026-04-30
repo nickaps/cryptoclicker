@@ -15,14 +15,35 @@
 #game{
     display: flex;
     justify-content: center;
+    align-items: flex-start;
+    gap:20px;
+    position: relative;
 }
 
-.rigShop{
-    justify-content: right;
+
+.rigShop {
+    font-family: Ds-font, sans-serif;
+    text-align: center;
+    position: absolute;
+    right: 10%;
+    width: 25%;
+    border: 2px solid #c1c1c1;
+    font-size: 30px;
 }
 
-.rig{
-    background: #d812f0;
+.price{
+   padding-top: 10px;
+}
+
+.items{
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 10px;
+}
+
+.items button{
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .crypto {
