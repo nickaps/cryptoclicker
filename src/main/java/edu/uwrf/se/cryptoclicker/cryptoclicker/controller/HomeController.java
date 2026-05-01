@@ -1,22 +1,22 @@
 package edu.uwrf.se.cryptoclicker.cryptoclicker.controller;
 
-
 import edu.uwrf.se.cryptoclicker.cryptoclicker.model.Player;
 import edu.uwrf.se.cryptoclicker.cryptoclicker.repository.PlayerRepository;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class HomeController {
 
+    private final PlayerRepository playerRepository;
 
+    public HomeController(PlayerRepository playerRepository) {
+        this.playerRepository = playerRepository;
+    }
+
+    // HOME
     @GetMapping("/")
     public String getHomeDefault() {
         return "home";
@@ -27,6 +27,7 @@ public class HomeController {
         return "home";
     }
 
+    // ABOUT
     @GetMapping("/about")
     public String getAbout() {
         return "about";
@@ -37,20 +38,21 @@ public class HomeController {
         return devName;
     }
 
+    // ✅ GAME (MAKE SURE USERNAME ALWAYS PASSES)
     @GetMapping("/game")
-    public String game() {
+    public String game(HttpSession session, Model model) {
+        Player player = (Player) session.getAttribute("currentUser");
+
+        if (player != null) {
+            model.addAttribute("currentUserName", player.getUsername());
+        } else {
+            model.addAttribute("currentUserName", "Guest");
+        }
+
         return "game";
     }
 
-
-
-    private final PlayerRepository playerRepository;
-
-    public HomeController(PlayerRepository playerRepository) {
-        this.playerRepository = playerRepository;
-    }
-
-
+    // REGISTER
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
         model.addAttribute("player", new Player());
@@ -59,14 +61,16 @@ public class HomeController {
 
     @PostMapping("/register")
     public String registerUser(@ModelAttribute Player player, Model model) {
-        if(playerRepository.findByUsername(player.getUsername()) != null) {
+        if (playerRepository.findByUsername(player.getUsername()) != null) {
             model.addAttribute("error", "Username already exists!");
             return "register";
         }
+
         playerRepository.save(player);
         return "redirect:/login";
     }
 
+    // LOGIN
     @GetMapping("/login")
     public String showLoginForm(Model model) {
         model.addAttribute("player", new Player());
@@ -75,12 +79,11 @@ public class HomeController {
 
     @PostMapping("/login")
     public String loginUser(@ModelAttribute Player player, HttpSession session, Model model) {
+
         Player existingUser = playerRepository.findByUsername(player.getUsername());
 
-        if(existingUser != null && existingUser.getPassword().equals(player.getPassword())) {
-//            model.addAttribute("username", existingUser.getUsername());
+        if (existingUser != null && existingUser.getPassword().equals(player.getPassword())) {
             session.setAttribute("currentUser", existingUser);
-            session.setAttribute("currentUserName", existingUser.getUsername());
             return "redirect:/welcome";
         } else {
             model.addAttribute("error", "Invalid username or password!");
@@ -88,42 +91,49 @@ public class HomeController {
         }
     }
 
+    // WELCOME
     @GetMapping("/welcome")
     public String welcomeScreen(HttpSession session, Model model) {
         Player player = (Player) session.getAttribute("currentUser");
+
         model.addAttribute("currentUserName", player.getUsername());
         model.addAttribute("currentUserScore", player.getScore());
         model.addAttribute("user", player);
+
         return "welcome";
     }
 
+    // ✅ CLEAN GUEST LOGIN (THIS IS THE IMPORTANT PART)
     @GetMapping("/guest-login")
-    public String loginGuest(HttpSession session, Model model) {
-        Player guest = playerRepository.getReferenceById(-1L);
+    public String loginGuest(HttpSession session) {
+
+        Player guest = new Player();
+        guest.setUsername("Guest");
+        guest.setScore(0);
+
         session.setAttribute("currentUser", guest);
-        model.addAttribute("currentUserName", guest.getUsername());
-        model.addAttribute("currentUserScore", 0);
-        model.addAttribute("user", guest);
+
         return "redirect:/game";
     }
 
-    @GetMapping("exit")
+    // EXIT GAME
+    @GetMapping("/exit")
     public String exitGame(HttpSession session, Model model, @RequestParam("newScore") int newScore) {
+
         Player player = (Player) session.getAttribute("currentUser");
-        if (player.getId() == -1) {
-            session.removeAttribute("user");
+
+        // if guest → just go home
+        if (player.getId() == null) {
+            session.removeAttribute("currentUser");
             return "redirect:/home";
         }
-        else {
-            if (newScore > -1 && newScore > player.getScore())
-            {
-                player.setScore(newScore);
-                playerRepository.setPlayerScore(player.getId(), newScore);
-            }
-            model.addAttribute("user", player);
-            return "redirect:/welcome";
+
+        // real user → save score
+        if (newScore > player.getScore()) {
+            player.setScore(newScore);
+            playerRepository.setPlayerScore(player.getId(), newScore);
         }
+
+        return "redirect:/welcome";
     }
-
-
 }
