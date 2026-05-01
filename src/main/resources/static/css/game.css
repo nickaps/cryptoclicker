@@ -20,6 +20,12 @@
     position: relative;
 }
 
+.player-label {
+    font-family: Ds-font, sans-serif;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 30px;
+}
 
 .rigShop {
     font-family: Ds-font, sans-serif;
