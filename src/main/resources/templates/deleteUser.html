@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+    <div class="title-bar">
+        <h2 th:object="${user}">Are you sure you want to delete your account <a th:text="*{username}">Guest</a>?</h2>
+    </div>
+
+
+    <div class="info">
+        <a href="/delete-user-confirmed">Yes, please and thank you!</a>
+        <a href="/welcome">Actually, I've changed my mind...</a>
+    </div>
+
+</body>
+</html>

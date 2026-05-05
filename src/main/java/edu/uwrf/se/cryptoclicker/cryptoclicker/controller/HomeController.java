@@ -136,4 +136,28 @@ public class HomeController {
 
         return "redirect:/welcome";
     }
+
+    // DELETE USER
+    @GetMapping("/delete-user")
+    public String deleteUser(HttpSession session, Model model){
+        Player player = (Player) session.getAttribute("currentUser");
+        model.addAttribute("user", player);
+        session.setAttribute("hasUserDeletionBeenPrompted", 1);
+        return "deleteUser";
+    }
+
+    // DELETE USER CONFIRM
+    @GetMapping("/delete-user-confirmed")
+    public String deleteUserConfirmed(HttpSession session, Model model) {
+        if (session.getAttribute("hasUserDeletionBeenPrompted") != null) {
+            Player player = (Player) session.getAttribute("currentUser");
+            playerRepository.delete(player);
+            session.removeAttribute("hasUserDeletionBeenPrompted");
+            session.removeAttribute("currentUser");
+            return "deleteUserConfirm";
+        }
+        else {
+            return "home";
+        }
+    }
 }
