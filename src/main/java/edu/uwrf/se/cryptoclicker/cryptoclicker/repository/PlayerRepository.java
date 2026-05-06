@@ -15,6 +15,6 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Modifying
     @Transactional
     @Query("UPDATE Player p SET p.score = :score WHERE p.id = :id")
-    int setPlayerScore(Long id, int score);
+    int setPlayerScore(Long id, long score);
 }
 

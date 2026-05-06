@@ -14,7 +14,7 @@ public class Player {
     private String username;
     private String password;
     private boolean admin;
-    private int score;
+    private long score;
 
     // Getters and setters
     public Long getId() { return id; }
@@ -29,7 +29,7 @@ public class Player {
     public boolean isAdmin() { return admin; }
     public void setAdmin(boolean admin) { this.admin = admin; }
 
-    public int getScore() { return score; }
-    public void setScore(int score) { this.score = score; }
+    public long getScore() { return score; }
+    public void setScore(long score) { this.score = score; }
 
 }

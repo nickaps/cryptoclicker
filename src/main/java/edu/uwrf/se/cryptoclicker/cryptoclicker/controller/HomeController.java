@@ -118,7 +118,7 @@ public class HomeController {
 
     // EXIT GAME
     @GetMapping("/exit")
-    public String exitGame(HttpSession session, Model model, @RequestParam("newScore") int newScore) {
+    public String exitGame(HttpSession session, Model model, @RequestParam("newScore") long newScore) {
 
         Player player = (Player) session.getAttribute("currentUser");
 
