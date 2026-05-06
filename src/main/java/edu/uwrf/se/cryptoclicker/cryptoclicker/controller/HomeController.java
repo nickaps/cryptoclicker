@@ -168,4 +168,22 @@ public class HomeController {
         session.setAttribute("hasUserChangeBeenPrompted", 1);
         return "changeName";
     }
+    @PostMapping("/update-username")
+    public String updateUsername(@ModelAttribute("user") Player updatedPlayer, HttpSession session, Model model) {
+        Player currentPlayer = (Player) session.getAttribute("currentUser");
+        String newName = updatedPlayer.getUsername();
+        Player existingPlayer = playerRepository.findByUsername(newName);
+
+        if (existingPlayer != null && !existingPlayer.getId().equals(currentPlayer.getId())) {
+
+            model.addAttribute("error", "That username is already taken. Please try another.");
+            model.addAttribute("user", updatedPlayer);
+
+            return "/changeName";
+        }
+        currentPlayer.setUsername(newName);
+        playerRepository.save(currentPlayer); // Persist to database
+        session.setAttribute("currentUser", currentPlayer);
+        return "redirect:/welcome";
+    }
 }

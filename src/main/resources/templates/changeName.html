@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Account</title>
+    <link rel="stylesheet" href="/css/main.css"/>
+</head>
+<body>
+    <div class="title-bar">
+        <h2 th:object="${user}">Change Your Username <a th:text="*{username}">Guest</a>?</h2>
+    </div>
+
+    <form th:action="@{/update-username}" th:object="${user}" method="post">
+        <h3>Enter the new username</h3>
+
+        <label for="username">New Username:</label>
+        <!-- th:field="*{username}" binds to the username property of the Player object -->
+        <input type="text" id="username" th:field="*{username}" placeholder="Enter new username" required/>
+        <br/>
+
+        <p th:text="${error}"></p>
+
+        <button type="submit">Update Username</button>
+        <a th:href="@{/welcome}">Cancel</a>
+    </form>
+
+
+
+</body>
+</html>
