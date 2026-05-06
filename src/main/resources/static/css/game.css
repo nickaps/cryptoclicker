@@ -63,7 +63,7 @@
     text-align: center;
 }
 .crypto:hover {
-    transition: .25s ease-in-out;
+    transition: .25nbs ease-in-out;
     background: #f09712;
     font-size: 25px;
     padding: 5px 10px;

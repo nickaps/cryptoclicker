@@ -160,4 +160,12 @@ public class HomeController {
             return "home";
         }
     }
+    //User Rename
+    @GetMapping("/change-name")
+    public String changeUser(HttpSession session, Model model) {
+        Player player = (Player) session.getAttribute("currentUser");
+        model.addAttribute("user", player);
+        session.setAttribute("hasUserChangeBeenPrompted", 1);
+        return "changeName";
+    }
 }
