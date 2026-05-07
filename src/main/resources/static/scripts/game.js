@@ -39,18 +39,18 @@ class miningRig {
 // Main application starts here
 
 let score = 0;
-let mk1 = new miningRig("mk1",0,20,1,1,1.2,1,1);
-let mk2 = new miningRig("mk2",0,100,8,1,1.2,1,1);
-let mk3 = new miningRig("mk3",0,500,25,1,1.2,1,1);
-let mk4 = new miningRig("mk4",0,1500,100,1,1.2,1,1);
-let mk5 = new miningRig("mk5",0,3500,700,1,1.2,1,1);
-let mk6 = new miningRig("mk6",0,7000,1000,1,1.2,1, 1);
-let mk7 = new miningRig("mk7",0,10000,2000,1,1.1,1,1);
-let mk8 = new miningRig("mk8",0,20000,7000,1,1.1,1,1);
-let mk9 = new miningRig("mk9",0,50000,15000,1,1.1,1,1);
-let mk10 = new miningRig("mk10",0,100000,30000,1,1.1,1,1);
-let mk11 = new miningRig("mk11",0,500000,70000,1,1.1,1,1);
-let mk12 = new miningRig("mk12",0,1000000,12000,1,1,1,1);
+let mk1 = new miningRig("mk1",0,15,0.1,1,1.2,1,1);
+let mk2 = new miningRig("mk2",0,100,1,1,1.2,1,1);
+let mk3 = new miningRig("mk3",0,1100,8,1,1.2,1,1);
+let mk4 = new miningRig("mk4",0,12000,47,1,1.2,1,1);
+let mk5 = new miningRig("mk5",0,130000,260,1,1.2,1,1);
+let mk6 = new miningRig("mk6",0,1400000,1400,1,1.2,1, 1);
+let mk7 = new miningRig("mk7",0,20000000,7800,1,1.1,1,1);
+let mk8 = new miningRig("mk8",0,220000000,44000,1,1.1,1,1);
+let mk9 = new miningRig("mk9",0,5000000000,260000,1,1.1,1,1);
+let mk10 = new miningRig("mk10",0,75000000000, 1600000 ,1,1.1,1,1);
+let mk11 = new miningRig("mk11",0,1000000000000,10000000,1,1.1,1,1);
+let mk12 = new miningRig("mk12",0,14000000000000,65000000,1,1,1,1);
 
 function exitGame() {
     window.location.href = "/exit?newScore=" + Number(score);
