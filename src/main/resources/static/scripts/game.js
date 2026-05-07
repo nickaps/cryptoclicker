@@ -30,6 +30,10 @@ class miningRig {
     }
 
 
+    getcost(){
+       return niceNums(this.cost)
+    }
+
 
     rig_score_income() {
         addScoreAmount(Math.round(this.amount * this.production * this.multiplier));
@@ -143,29 +147,29 @@ function buy(rig) {
 function rigcost(rig){
         switch (rig) {
             case 'mk1':
-                return mk1.cost;
+                return mk1.getcost()
             case 'mk2':
-                return mk2.cost;
+                return mk2.getcost()
             case 'mk3':
-                return mk3.cost;
+                return mk3.getcost()
             case 'mk4':
-                return mk4.cost;
+                return mk4.getcost()
             case 'mk5':
-                return mk5.cost;
+                return mk5.getcost()
             case 'mk6':
-                return mk6.cost;
+                return mk6.getcost()
             case 'mk7':
-                return mk7.cost;
+                return mk7.getcost()
             case 'mk8':
-                return mk8.cost;
+                return mk8.getcost()
             case 'mk9':
-                return mk9.cost;
+                return mk9.getcost()
             case 'mk10':
-                return mk10.cost;
+                return mk10.getcost()
             case 'mk11':
-                return mk11.cost;
+                return mk11.getcost()
             case 'mk12':
-                return mk12.cost;
+                return mk12.getcost()
         }
 }
 
@@ -173,4 +177,12 @@ function swap(rig) {
         document.querySelector('.price').textContent = (rig + "  $" + rigcost(rig));
 }
 
+function niceNums(num){
+    if (num >= 1000000000000000000) {return ((num / 1000000000000000).toFixed(1) + " Get A Life")}
+    if (num >= 1000000000000000) {return ((num / 1000000000000000).toFixed(1) + " Quadrillion")}
+    if (num >= 1000000000000) {return ((num / 1000000000000).toFixed(1) + " Trillion")}
+    if (num >= 1000000000) {return ((num / 1000000000).toFixed(1) + " Billion")}
+    if (num >= 1000000) {return ((num / 1000000).toFixed(1) + " Million")}
+    else {return num.toLocaleString("en-US")}
+}
 
