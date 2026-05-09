@@ -50,6 +50,10 @@ class miningRig {
 
 let score = 0;
 
+let clickValue = 1;
+let upgradeUnlocked = false;
+let upgradePurchased = false;
+
 // This is where the passive income generators are defined. Feel free to change their properties.
 let mk1 = new miningRig("mk1",0,15,1,1,1.2,1,1);
 let mk2 = new miningRig("mk2",0,100,3,1,1.2,1,1);
@@ -74,12 +78,17 @@ function exitGame() {
 }
 
 function addScore() {
-    score += 1;
+    score += clickValue;
     console.log(score);
     let scoreDisplay = document.getElementById("score");
     //element.innerHTML = element.innerHTML.replace("score", score);
-    scoreDisplay.textContent = score;
+    scoreDisplay.textContent = niceNums(score);
     //document.getElementById.replace("0", score);
+
+    if (score >= 50000000 && !upgradeUnlocked) {
+        document.getElementById("secretUpgrade").style.display = "block";
+        upgradeUnlocked = true;
+    }
 }
 
 
@@ -87,7 +96,7 @@ function addScore() {
 function addScoreAmount(amount) {
     score += amount;
     console.log(score);
-    document.getElementById("score").textContent = score;
+    document.getElementById("score").textContent = niceNums(score);
 }
 
 
@@ -132,6 +141,16 @@ function updateInventory() {
     }
     document.getElementById("inventoryList").textContent =
         inventoryText;
+}
+
+function buyClickUpgrade() {
+    if (score >= 25000000 && !upgradePurchased) {
+        addScoreAmount(-25000000);
+        clickValue = 500000;
+        upgradePurchased = true;
+        document.getElementById("secretUpgrade").innerHTML =
+            "Click Upgrade Purchased!";
+    }
 }
 
 // Takes a number and returns a string with better formatting.

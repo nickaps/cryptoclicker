@@ -61,9 +61,9 @@
     color: white;
     cursor: pointer;
     text-align: center;
+    transition: 0.25s ease-in-out;
 }
 .crypto:hover {
-    transition: .25nbs ease-in-out;
     background: #f09712;
     font-size: 25px;
     padding: 5px 10px;
@@ -71,4 +71,17 @@
 
 .content {
     margin-top: 150px;
+}
+
+#secretUpgrade {
+    margin-top: 15px;
+}
+
+#secretUpgrade button {
+    font-family: Ds-font, sans-serif;
+    background-color: #d812f0;
+    color: white;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
 }
