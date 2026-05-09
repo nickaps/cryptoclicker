@@ -106,6 +106,7 @@ function buy(key){
     const rig = rigList[key];
     if(rig.buy()){
         window.setInterval(() => rig.rig_score_income(), 1000);
+        updateInventory();
     }
     swap(key);
 }
@@ -117,7 +118,23 @@ function swap(key) {
        (rig.getname() + " : $" + rig.getcost() + " : #" + rig.getAmount());
 }
 
-// Takes a number and returns a string with better formating.
+function updateInventory() {
+    let inventoryText = "";
+    Object.values(rigList).forEach(rig => {
+        if (rig.amount > 0) {
+            inventoryText +=
+                rig.getname() + "\u00A0x" + rig.getAmount() + ", ";
+        }
+    });
+
+    if (inventoryText === "") {
+        inventoryText = "No rigs purchased yet.";
+    }
+    document.getElementById("inventoryList").textContent =
+        inventoryText;
+}
+
+// Takes a number and returns a string with better formatting.
 function niceNums(num){
     if (num >= 1000000000000000000) {return ((num / 1000000000000000).toFixed(1) + " Get A Life")}
     if (num >= 1000000000000000) {return ((num / 1000000000000000).toFixed(1) + " Quadrillion")}
