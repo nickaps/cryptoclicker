@@ -55,7 +55,7 @@ let upgradeUnlocked = false;
 let upgradePurchased = false;
 
 // This is where the passive income generators are defined. Feel free to change their properties.
-let mk1 = new miningRig("mk1",0,15,12222,1,1.2,1,1);
+let mk1 = new miningRig("mk1",0,15,1,1,1.2,1,1);
 let mk2 = new miningRig("mk2",0,100,3,1,1.2,1,1);
 let mk3 = new miningRig("mk3",0,1100,8,1,1.2,1,1);
 let mk4 = new miningRig("mk4",0,12000,47,1,1.2,1,1);
