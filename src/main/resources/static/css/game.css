@@ -52,6 +52,41 @@
     box-sizing: border-box;
 }
 
+
+.upgradeShop{
+    font-family: Ds-font, sans-serif;
+    text-align: center;
+    position: absolute;
+    left: 10%;
+    width: 25%;
+    border: 2px solid #c1c1c1;
+    font-size: 30px;
+}
+
+.leftPrice{
+    padding-top: 10px;
+}
+
+.leftItems{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+.leftItems button{
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+
+
+
+
+
 .crypto {
     width: 150px;
     height: 150px;

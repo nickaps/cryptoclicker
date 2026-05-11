@@ -1,15 +1,15 @@
 // An object which can be used to make passive income generators
 class miningRig {
 
-    constructor(name, amount, cost, production, multiplierCost, costScaling, multiplierScaling, multiplier) {
+    constructor(name, amount, cost, production, multiplierCost, costScaling, multiplier, multiplierScaling) {
         this.name = name;
         this.amount = amount;
         this.cost = cost;
         this.production = production;
         this.multiplierCost = multiplierCost;
         this.costScaling = costScaling;
-        this.multiplierScaling = multiplierScaling;
         this.multiplier = multiplier;
+        this.multiplierScaling = multiplierScaling
     }
 
     // actually handles the buying. It checks if you have enough to buy, takes the money
@@ -20,6 +20,17 @@ class miningRig {
             addScoreAmount(-this.cost);
             this.cost = Math.round(this.cost * this.costScaling);
             this.amount++;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    upgradeBuy(){
+        if (score >= this.multiplierCost) {
+            addScoreAmount(-this.multiplierCost);
+            this.multiplierCost = Math.round(this.multiplierCost * this.multiplierScaling);
+            this.multiplier = this.multiplier + 1
             return true;
         } else {
             return false;
@@ -39,6 +50,10 @@ class miningRig {
        return niceNums(this.cost)
     }
 
+    getMultiplierCost(){
+        return niceNums(this.multiplierCost)
+    }
+
 
     // this adds to your score based on how many rigs you have and if they have multipliers
     rig_score_income() {
@@ -55,18 +70,18 @@ let upgradeUnlocked = false;
 let upgradePurchased = false;
 
 // This is where the passive income generators are defined. Feel free to change their properties.
-let mk1 = new miningRig("mk1",0,15,1,1,1.2,1,1);
-let mk2 = new miningRig("mk2",0,100,3,1,1.2,1,1);
-let mk3 = new miningRig("mk3",0,1100,8,1,1.2,1,1);
-let mk4 = new miningRig("mk4",0,12000,47,1,1.2,1,1);
-let mk5 = new miningRig("mk5",0,130000,260,1,1.2,1,1);
-let mk6 = new miningRig("mk6",0,1400000,1400,1,1.2,1, 1);
-let mk7 = new miningRig("mk7",0,20000000,7800,1,1.1,1,1);
-let mk8 = new miningRig("mk8",0,220000000,44000,1,1.1,1,1);
-let mk9 = new miningRig("mk9",0,5000000000,260000,1,1.1,1,1);
-let mk10 = new miningRig("mk10",0,75000000000, 1600000 ,1,1.1,1,1);
-let mk11 = new miningRig("mk11",0,1000000000000,10000000,1,1.1,1,1);
-let mk12 = new miningRig("mk12",0,14000000000000,65000000,1,1,1,1);
+let mk1 = new miningRig("mk1",0,15,1,15,1.2,1,15);
+let mk2 = new miningRig("mk2",0,100,3,1,1.2,1,15);
+let mk3 = new miningRig("mk3",0,1100,8,1,1.2,1,15);
+let mk4 = new miningRig("mk4",0,12000,47,1,1.2,1,15);
+let mk5 = new miningRig("mk5",0,130000,260,1,1.2,1,15);
+let mk6 = new miningRig("mk6",0,1400000,1400,1,1.2,1,15);
+let mk7 = new miningRig("mk7",0,20000000,7800,1,1.1,1,14);
+let mk8 = new miningRig("mk8",0,220000000,44000,1,1.1,1,14);
+let mk9 = new miningRig("mk9",0,5000000000,260000,1,1.1,1,14);
+let mk10 = new miningRig("mk10",0,75000000000, 1600000 ,1,1.1,1,12);
+let mk11 = new miningRig("mk11",0,1000000000000,10000000,1,1.1,1,12);
+let mk12 = new miningRig("mk12",0,14000000000000,65000000,1,1,1,12);
 
 // List to make getting individual mk's easier
 const rigList = {
@@ -100,6 +115,7 @@ function addScoreAmount(amount) {
 }
 
 
+// right shop
 // item resolver gets key from button, listens for actions and resolves them based on the key.
 document.querySelectorAll(".items button").forEach(item => {
     const key = item.dataset.item;
@@ -152,6 +168,33 @@ function buyClickUpgrade() {
             "Click Upgrade Purchased!";
     }
 }
+
+
+// left shop
+// left item resolver gets keys from buttons, listens for action and calls
+// appropriate functions
+document.querySelectorAll(".leftItems button").forEach(item => {
+    const key = item.dataset.item;
+
+    item.addEventListener("mouseover", () => upgradeSwap(key));
+    item.addEventListener("click", () => upgradeBuy(key));
+});
+
+function upgradeBuy(key){
+    const rig = rigList[key];
+    if(rig.upgradeBuy()){
+        // updateInventory();
+    }
+    upgradeSwap(key);
+}
+
+function upgradeSwap(key){
+    const rig = rigList[key];
+    document.querySelector(".leftPrice").textContent =
+        (rig.getname() + " : $" + rig.getMultiplierCost());
+}
+
+
 
 // Takes a number and returns a string with better formatting.
 function niceNums(num){
