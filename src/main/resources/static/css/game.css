@@ -33,12 +33,17 @@
     position: absolute;
     right: 10%;
     width: 25%;
-    border: 2px solid #c1c1c1;
+
+    border: 3px solid #d812f0;
+    background: #fff;
     font-size: 30px;
 }
 
+
 .price{
-   padding-top: 10px;
+    border-top: 2px solid #d812f0;
+    border-bottom: 2px solid #d812f0;
+    padding-top: 10px;
 }
 
 .items{
@@ -59,11 +64,15 @@
     position: absolute;
     left: 10%;
     width: 25%;
-    border: 2px solid #c1c1c1;
+    border: 3px solid #d812f0;
+    background: #fff;
     font-size: 30px;
 }
 
 .leftPrice{
+    padding-top: 10px;
+    border-top: 2px solid #d812f0;
+    border-bottom: 2px solid #d812f0;
     padding-top: 10px;
 }
 
