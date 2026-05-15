@@ -94,11 +94,18 @@
     border-top: 2px solid #d812f0;
 }
 
+#clickValueDisplay{
+    font-family: Ds-font, sans-serif;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 28px;
+}
 
-
-
-
-
+.clickSection{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .crypto {
     width: 150px;
