@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @Controller
@@ -190,19 +191,41 @@ public class HomeController {
         return "redirect:/welcome";
     }
 
-    @GetMapping("/leaderboard")
-    public String showLeaderboard(Model model, HttpSession session) {
-        Player player = (Player)session.getAttribute("currentUser");
+//    @GetMapping("/leaderboard")
+//    public String showLeaderboard(Model model, HttpSession session) {
+//        Player player = (Player)session.getAttribute("currentUser");
+//
+//        // Logs player out if they are logged in
+//        if (player != null) {
+//            session.removeAttribute("currentUser");
+//        }
+//
+//        List<Player> topPlayers = playerRepository.findAll(Sort.by("score").descending());
+//        model.addAttribute("topPlayers", topPlayers);
+//
+//        return "leaderboard";
+//
+//    }
 
-        // Logs player out if they are logged in
-        if (player != null) {
-            session.removeAttribute("currentUser");
+    @GetMapping("/leaderboard")
+    public String showLeaderboard(
+            Model model,
+            HttpSession session,
+            @RequestHeader(value = "Referer", required = false) String referer) {
+
+        Player player = (Player) session.getAttribute("currentUser");
+
+        String backUrl = "/home"; // Safe default fallback
+
+        if (referer != null && !referer.isEmpty() && !referer.contains("/login")) {
+            backUrl = referer;
         }
+
+        model.addAttribute("backUrl", backUrl);
 
         List<Player> topPlayers = playerRepository.findAll(Sort.by("score").descending());
         model.addAttribute("topPlayers", topPlayers);
 
         return "leaderboard";
-
     }
 }

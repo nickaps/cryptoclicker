@@ -73,7 +73,6 @@
     padding-top: 10px;
     border-top: 2px solid #d812f0;
     border-bottom: 2px solid #d812f0;
-    padding-top: 10px;
 }
 
 .leftItems{
@@ -88,6 +87,11 @@
 .leftItems button{
     width: 100%;
     box-sizing: border-box;
+}
+
+.inventory{
+    font-family: Ds-font, sans-serif;
+    border-top: 2px solid #d812f0;
 }
 
 

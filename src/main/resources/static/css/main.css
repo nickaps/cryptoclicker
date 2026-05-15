@@ -89,3 +89,39 @@ button:hover {
 table th, table td {
     text-align: left;
 }
+
+.leaderboard-container {
+    max-width: 325px;
+    margin: 0 auto;
+    font-family: Ds-font, sans-serif;
+    font-size: 25px;
+    background: white;
+    border: 3px solid #d812f0;
+}
+
+/* This applies to BOTH the header row and every single player row */
+.leaderboard-header, .leaderboard-row {
+    display: grid;
+    /* Column 1 (Rank) gets 60px, Column 2 (Name) takes the remaining space, Column 3 (Score) gets 100px */
+    grid-template-columns: 60px 1fr 100px;
+    padding: 10px;
+    align-items: center;
+}
+
+/* Style the header to stand out */
+.leaderboard-header {
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    text-transform: uppercase;
+}
+
+/* Add a subtle line between players and right-align the scores */
+.leaderboard-row {
+    /*border-bottom: 1px solid #d812f0;*/
+}
+
+/* Optional: Make the score column text align neatly to the right */
+.leaderboard-header div:last-child,
+.leaderboard-row div:last-child {
+    text-align: right;
+}

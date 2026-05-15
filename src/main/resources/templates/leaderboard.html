@@ -11,13 +11,32 @@
     <p>See yourself?</p>
 </div>
 
+<div class="leaderboard-container">
+    <!-- Column Headers -->
+    <div class="leaderboard-header">
+        <div>Rank</div>
+        <div>Name</div>
+        <div>Score</div>
+    </div>
+    <!-- Data Rows -->
+    <div th:each="user: ${topPlayers}" class="leaderboard-row">
+        <div th:text="${userStat.count}">1</div>
+        <div th:text="${user.username}">johndoe</div>
+        <div th:text="${user.score}">100</div>
+    </div>
+</div>
+
+<!--<div class="info">-->
+<!--    <tr th:each="user: ${topPlayers}">-->
+<!--        <td th:text="${userStat.count}">1</td>-->
+<!--        <td th:text="${user.username}">johndoe</td>-->
+<!--        <td th:text="${user.score}">100</td>-->
+<!--        <br/>-->
+<!--    </tr>-->
+<!--</div>-->
+
 <div class="info">
-    <tr th:each="user: ${topPlayers}">
-        <td th:text="${userStat.count}">1</td>
-        <td th:text="${user.username}">johndoe</td>
-        <td th:text="${user.score}">100</td>
-        <br/>
-    </tr>
+    <a th:href="${backUrl}" class="info">Go Back</a>
 </div>
 
 </body>
