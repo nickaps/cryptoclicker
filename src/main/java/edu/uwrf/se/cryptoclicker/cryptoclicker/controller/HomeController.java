@@ -3,9 +3,12 @@ package edu.uwrf.se.cryptoclicker.cryptoclicker.controller;
 import edu.uwrf.se.cryptoclicker.cryptoclicker.model.Player;
 import edu.uwrf.se.cryptoclicker.cryptoclicker.repository.PlayerRepository;
 import jakarta.servlet.http.HttpSession;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -185,5 +188,21 @@ public class HomeController {
         playerRepository.save(currentPlayer); // Persist to database
         session.setAttribute("currentUser", currentPlayer);
         return "redirect:/welcome";
+    }
+
+    @GetMapping("/leaderboard")
+    public String showLeaderboard(Model model, HttpSession session) {
+        Player player = (Player)session.getAttribute("currentUser");
+
+        // Logs player out if they are logged in
+        if (player != null) {
+            session.removeAttribute("currentUser");
+        }
+
+        List<Player> topPlayers = playerRepository.findAll(Sort.by("score").descending());
+        model.addAttribute("topPlayers", topPlayers);
+
+        return "leaderboard";
+
     }
 }

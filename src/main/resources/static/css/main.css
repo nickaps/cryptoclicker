@@ -85,3 +85,7 @@ button:hover {
     padding: 5px 10px;
     transform: scale(1.2);
 }
+
+table th, table td {
+    text-align: left;
+}

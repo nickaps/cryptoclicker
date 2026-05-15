@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Leaderboard</title>
+</head>
+<body>
+<div class="title-bar">
+    <h2 th:object="${user}">Leaderboard</a>!</h2>
+    <p>See yourself?</p>
+</div>
+
+<div class="info">
+    <tr th:each="user: ${topPlayers}">
+        <td th:text="${userStat.count}">1</td>
+        <td th:text="${user.username}">johndoe</td>
+        <td th:text="${user.score}">100</td>
+        <br/>
+    </tr>
+</div>
+
+</body>
+</html>

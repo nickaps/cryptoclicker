@@ -2,9 +2,12 @@ package edu.uwrf.se.cryptoclicker.cryptoclicker.repository;
 
 import edu.uwrf.se.cryptoclicker.cryptoclicker.model.Player;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+
+import java.util.List;
 
 
 public interface PlayerRepository extends JpaRepository<Player, Long> {
@@ -16,5 +19,7 @@ public interface PlayerRepository extends JpaRepository<Player, Long> {
     @Transactional
     @Query("UPDATE Player p SET p.score = :score WHERE p.id = :id")
     int setPlayerScore(Long id, long score);
+
+    List<Player> findAll(Sort sort);
 }
 
