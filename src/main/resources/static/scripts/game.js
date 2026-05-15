@@ -187,13 +187,21 @@ function upgradeBuy(key){
     const rig = rigList[key];
     if(rig.upgradeBuy()){
     }
+    document.querySelectorAll(".leftItems button").forEach(item => {
+        const key = item.dataset.item;
+        const rig = rigList[key];
+
+        item.textContent =
+            rig.getname() + " overclock x" + (rig.multiplier - 1);
+    });
     upgradeSwap(key);
 }
 
 function upgradeSwap(key){
     const rig = rigList[key];
     document.querySelector(".leftPrice").textContent =
-        (rig.getname() + " : $" + rig.getMultiplierCost());
+        (rig.getname() + ": $" + rig.getMultiplierCost()
+            + " | Owned: " + (rig.multiplier - 1));
 }
 
 
@@ -222,5 +230,6 @@ function niceNums(num){
     document.querySelectorAll(".leftItems button").forEach(item => {
         const key = item.dataset.item;
         const rig = rigList[key];
-        item.textContent = rig.getname() + " overclock";
+        item.textContent =
+            rig.getname() + " overclock x" + (rig.multiplier - 1);
     });
