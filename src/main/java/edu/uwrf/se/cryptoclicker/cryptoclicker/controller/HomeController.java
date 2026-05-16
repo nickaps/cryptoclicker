@@ -23,7 +23,7 @@ public class HomeController {
     // HOME
     @GetMapping("/")
     public String getHomeDefault() {
-        return "home";
+        return "redirect:/home";
     }
 
     @GetMapping("/home")
