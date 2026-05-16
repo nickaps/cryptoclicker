@@ -161,7 +161,7 @@ public class HomeController {
             return "deleteUserConfirm";
         }
         else {
-            return "home";
+            return "redirect:/home";
         }
     }
     //User Rename
